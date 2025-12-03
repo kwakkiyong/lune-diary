@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- 배경 (어두운 밤하늘) -->
+  <rect width="64" height="64" fill="#1a1a2e" rx="8"/>
+  
+  <!-- 별들 -->
+  <circle cx="16" cy="16" r="1.5" fill="#fbbf24" opacity="0.8"/>
+  <circle cx="48" cy="20" r="1" fill="#fbbf24" opacity="0.6"/>
+  <circle cx="20" cy="48" r="1.2" fill="#fbbf24" opacity="0.7"/>
+  <circle cx="52" cy="44" r="1" fill="#fbbf24" opacity="0.5"/>
+  
+  <!-- 달 (반달 모양) -->
+  <path d="M 32 12 A 16 16 0 0 1 32 44 A 12 12 0 0 0 32 20 Z" fill="#fbbf24" opacity="0.9"/>
+  <path d="M 32 12 A 16 16 0 0 0 32 44 A 12 12 0 0 1 32 20 Z" fill="#1a1a2e"/>
+  
+  <!-- 달의 내부 그림자 -->
+  <ellipse cx="28" cy="28" rx="6" ry="8" fill="#1a1a2e" opacity="0.3"/>
+</svg>
+
