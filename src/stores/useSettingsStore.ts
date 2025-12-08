@@ -1,6 +1,5 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import type { Settings } from '@/types'
 
 const DEFAULT_PROMPT_TEMPLATE = `다음 일기 내용을 분석하여 감정을 파악해주세요.
 
@@ -16,28 +15,22 @@ const DEFAULT_PROMPT_TEMPLATE = `다음 일기 내용을 분석하여 감정을 
 {text}`
 
 interface SettingsState {
-  settings: Settings
-  updateSettings: (settings: Partial<Settings>) => void
-  resetSettings: () => void
-}
-
-const defaultSettings: Settings = {
-  openaiApiKey: '',
-  youtubeApiKey: '',
-  emotionPromptTemplate: DEFAULT_PROMPT_TEMPLATE,
+  emotionPromptTemplate: string
+  updatePromptTemplate: (template: string) => void
+  resetPromptTemplate: () => void
 }
 
 export const useSettingsStore = create<SettingsState>()(
   persist(
     (set) => ({
-      settings: defaultSettings,
-      updateSettings: (newSettings) =>
-        set((state) => ({
-          settings: { ...state.settings, ...newSettings },
-        })),
-      resetSettings: () =>
+      emotionPromptTemplate: DEFAULT_PROMPT_TEMPLATE,
+      updatePromptTemplate: (template) =>
         set({
-          settings: defaultSettings,
+          emotionPromptTemplate: template,
+        }),
+      resetPromptTemplate: () =>
+        set({
+          emotionPromptTemplate: DEFAULT_PROMPT_TEMPLATE,
         }),
     }),
     {

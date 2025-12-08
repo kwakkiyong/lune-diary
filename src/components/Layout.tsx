@@ -1,5 +1,5 @@
 import {Link, useLocation} from 'react-router-dom'
-import {Moon, Home, BarChart3, Settings, Calendar, Menu, X} from 'lucide-react'
+import {Moon, Home, BarChart3, Calendar, Menu, X} from 'lucide-react'
 import {MusicPlayerFooter} from './MusicPlayerFooter'
 import {MoodBackground} from './MoodBackground'
 import {useAnalysisStore} from '@/stores/useAnalysisStore'
@@ -15,7 +15,6 @@ export function Layout({children}: { children: React.ReactNode }) {
         {path: '/', label: 'Home', icon: Home},
         {path: '/calendar', label: 'Calendar', icon: Calendar},
         {path: '/insights', label: 'Insights', icon: BarChart3},
-        {path: '/settings', label: 'Settings', icon: Settings},
     ]
 
     // AI 분석 결과가 있으면 그 감정을 사용, 없으면 기본값 '평온' (평범한 하루)

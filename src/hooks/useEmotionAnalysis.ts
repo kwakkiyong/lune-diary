@@ -15,8 +15,12 @@ export function useEmotionAnalysis() {
   const { setCurrentAnalysis } = useAnalysisStore()
   const { addEntry } = useEntryStore()
   const { setPlaylist } = useMusicStore()
-  const { settings } = useSettingsStore()
+  const { emotionPromptTemplate } = useSettingsStore()
   const { isLoading, error, setLoading, setError, clearError } = useUIStore()
+
+  // .env에서 API 키 읽기
+  const openaiApiKey = import.meta.env.VITE_OPENAI_API_KEY || ''
+  const youtubeApiKey = import.meta.env.VITE_YOUTUBE_API_KEY || ''
 
   const handleAnalyze = async (entryText: string, today: string) => {
     // 유효성 검사
@@ -25,8 +29,8 @@ export function useEmotionAnalysis() {
       return
     }
 
-    if (!settings.openaiApiKey) {
-      setError('OpenAI API 키를 설정해주세요. Settings 페이지에서 설정할 수 있습니다.')
+    if (!openaiApiKey) {
+      setError('OpenAI API 키가 설정되지 않았습니다. .env 파일에 VITE_OPENAI_API_KEY를 설정해주세요.')
       return
     }
 
@@ -40,16 +44,16 @@ export function useEmotionAnalysis() {
       // 감정 분석
       const emotionAnalysis = await analyzeEmotion(
         entryText,
-        settings.emotionPromptTemplate,
-        settings.openaiApiKey
+        emotionPromptTemplate,
+        openaiApiKey
       )
       setAnalysis(emotionAnalysis)
       setCurrentAnalysis(emotionAnalysis) // 전역 상태에 저장하여 Layout에서 사용
 
       // 음악 추천 (YouTube API 키가 있는 경우)
-      if (settings.youtubeApiKey) {
+      if (youtubeApiKey) {
         try {
-          const videos = await getMusicByEmotion(emotionAnalysis.emotionLabel, settings.youtubeApiKey)
+          const videos = await getMusicByEmotion(emotionAnalysis.emotionLabel, youtubeApiKey)
           setMusicVideos(videos)
           setPlaylist(videos) // 전역 플레이리스트에 저장
         } catch (error) {

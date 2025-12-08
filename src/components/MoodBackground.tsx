@@ -401,7 +401,7 @@ function MoodBackgroundComponent({mood}: MoodBackgroundProps) {
                         animate={{
                             x: [0, cloud.x1, cloud.x2, cloud.x3, 0],
                             y: [0, cloud.y1, cloud.y2, cloud.y3, 0],
-                            opacity: [0.08, 0.15, 0.12, 0.18, 0.08],
+                            opacity: [0.3, 0.5, 0.4, 0.55, 0.3],
                             scale: [1, 1.2, 0.9, 1.1, 1],
                         }}
                         transition={{
@@ -414,8 +414,8 @@ function MoodBackgroundComponent({mood}: MoodBackgroundProps) {
                         <div
                             className="w-full h-full"
                             style={{
-                                background: `radial-gradient(ellipse, rgba(150,150,200,0.15) 0%, rgba(100,100,150,0.1) 50%, transparent 100%)`,
-                                filter: 'blur(40px)',
+                                background: `radial-gradient(ellipse, rgba(150,150,200,0.5) 0%, rgba(100,100,150,0.4) 50%, transparent 100%)`,
+                                filter: 'blur(25px)',
                             }}
                         />
                     </motion.div>
@@ -432,7 +432,7 @@ function MoodBackgroundComponent({mood}: MoodBackgroundProps) {
                             height: `${pulse.size}px`,
                         }}
                         animate={{
-                            opacity: [0.05, 0.12, 0.05],
+                            opacity: [0.2, 0.4, 0.2],
                             scale: [1, 1.3, 1],
                         }}
                         transition={{
@@ -445,8 +445,8 @@ function MoodBackgroundComponent({mood}: MoodBackgroundProps) {
                         <div
                             className="w-full h-full"
                             style={{
-                                background: `radial-gradient(circle, rgba(120,120,180,0.1) 0%, transparent 70%)`,
-                                filter: 'blur(30px)',
+                                background: `radial-gradient(circle, rgba(120,120,180,0.35) 0%, transparent 70%)`,
+                                filter: 'blur(20px)',
                             }}
                         />
                     </motion.div>
