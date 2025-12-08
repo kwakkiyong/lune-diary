@@ -55,7 +55,7 @@ LuneDiary는 사용자가 하루의 감정을 텍스트로 기록하면 OpenAI G
 - 감정 점수 추이 라인 차트
 - 키워드 빈도 막대 차트
 
-## 3. 환경 변수 설정
+## 2. 환경 변수 설정
 
 ---
 `.env.example` 파일을 참고하여 `.env` 파일을 프로젝트 루트에 생성하고 다음 변수를 설정하세요:
@@ -65,11 +65,11 @@ VITE_OPENAI_API_KEY=sk-your-openai-api-key-here
 VITE_YOUTUBE_API_KEY=your-youtube-api-key-here
 ```
 
-## 4. 구현
+## 3. 구현
 
 ---
 
-### 4-1) 상태 관리
+### 3-1) 상태 관리
 
 데이터의 상태 관리는 **Zustand**를 이용하였습니다.
 
@@ -78,7 +78,7 @@ VITE_YOUTUBE_API_KEY=your-youtube-api-key-here
 - **useMusicStore**: 현재 재생 중인 음악, 플레이리스트, 볼륨 상태를 관리하며, 볼륨과 음소거 상태는 localStorage에 저장됩니다.
 - **useSettingsStore**: 감정 분석에 사용되는 프롬프트 템플릿을 관리하며 localStorage에 저장됩니다.
 
-### 4-2) API 호출 및 감정 분석
+### 3-2) API 호출 및 감정 분석
 
 **Axios**를 이용하여 API 요청을 처리합니다.
 
@@ -88,28 +88,28 @@ VITE_YOUTUBE_API_KEY=your-youtube-api-key-here
 - 분석된 감정 라벨을 기반으로 YouTube Data API v3를 호출하여 감정에 맞는 음악을 검색하고 추천 플레이리스트를 생성합니다. YouTube API 키는 선택사항이며, `.env` 파일의
   `VITE_YOUTUBE_API_KEY`에서 읽어옵니다.
 
-### 4-3) 배경 애니메이션
+### 3-3) 배경 애니메이션
 
 **Framer Motion**을 이용하여 감정에 따른 배경 애니메이션을 구현하였습니다.
 
 - `MoodBackground` 컴포넌트에서 현재 분석된 감정(`emotionLabel`)에 따라 다른 애니메이션 패턴을 보여줍니다.
 - 각 감정별로 비, 별, 꽃잎, 불꽃, 안개 등 다양한 애니메이션 효과가 적용되며, `useMemo`를 활용하여 성능을 최적화했습니다.
 
-### 4-4) 음악 재생 기능
+### 3-4) 음악 재생 기능
 
 - 분석된 감정에 맞는 음악 추천 결과를 `map()`을 이용하여 카드 형태로 표시합니다.
 - 사용자가 원하는 음악을 클릭하면 `useMusicStore`의 `setCurrentVideo`를 통해 현재 재생 음악으로 설정됩니다.
 - `MusicPlayerFooter` 컴포넌트에서 YouTube IFrame API를 이용하여 음악을 재생/정지할 수 있고, 볼륨 조절도 가능합니다.
 - 이전/다음 곡 재생 기능을 제공하며, 플레이리스트 내에서 자동으로 이동합니다.
 
-### 4-5) 달력 및 일기 조회
+### 3-5) 달력 및 일기 조회
 
 - `react-calendar` 라이브러리를 사용하여 달력을 구현하였습니다.
 - 일기가 있는 날짜는 `tileClassName`을 통해 시각적으로 강조 표시됩니다.
 - 선택한 날짜의 일기 목록을 `useEntryStore`에서 필터링하여 표시하며, 각 일기 카드를 클릭하면 모달로 상세 내용을 확인할 수 있습니다.
 - 일기 삭제 기능을 제공하며, 삭제 시 localStorage의 데이터도 함께 업데이트됩니다.
 
-### 4-6) 통계 대시보드
+### 3-6) 통계 대시보드
 
 **Recharts**를 이용하여 감정 통계를 시각화합니다.
 
@@ -117,7 +117,7 @@ VITE_YOUTUBE_API_KEY=your-youtube-api-key-here
 - 날짜 범위 필터(7일, 30일, 전체)를 선택하면 해당 기간의 데이터만 표시됩니다.
 - 감정별 비율은 `PieChart`로, 감정 점수 추이는 `LineChart`로, 키워드 빈도는 `BarChart`로 시각화됩니다.
 
-### 4-7) 데이터 상태 관리
+### 3-7) 데이터 상태 관리
 
 - Zustand의 `persist` 미들웨어를 이용하여 새로고침하여도 데이터가 localStorage에 저장되도록 하였습니다.
 - 일기 데이터(`lune-diary-entries`), 음악 설정(`lune-diary-music`), 프롬프트 템플릿(`lune-diary-settings`)이 각각 localStorage에 저장됩니다.
