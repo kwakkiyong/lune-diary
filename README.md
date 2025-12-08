@@ -6,16 +6,10 @@ LuneDiary는 사용자가 하루의 감정을 텍스트로 기록하면 OpenAI G
 감정에 따라 배경 애니메이션이 변경되고, YouTube API를 통해 감정에 맞는 음악을 추천합니다.
 
 ## API 키 발급
-
----
-
 - **OpenAI API 키**: https://platform.openai.com/api-keys
 - **YouTube Data API v3 키**: https://console.cloud.google.com/apis/credentials
 
 ## 기술 스택
-
----
-
 - **React 19** - 최신 React 기능
 - **TypeScript** - 타입 안정성
 - **Vite** - 빠른 개발 서버 및 빌드
@@ -31,7 +25,7 @@ LuneDiary는 사용자가 하루의 감정을 텍스트로 기록하면 OpenAI G
 
 ## 1. 기능
 
----
+
 메뉴는 **``Home``, ``Calendar``, ``Insights``** 로 구성되어 있습니다.
 
 ### 1-1) 📔 ``Home`` : 감정 일기 작성 및 AI 분석
@@ -57,7 +51,7 @@ LuneDiary는 사용자가 하루의 감정을 텍스트로 기록하면 OpenAI G
 
 ## 3. 환경 변수 설정
 
----
+
 `.env.example` 파일을 참고하여 `.env` 파일을 프로젝트 루트에 생성하고 다음 변수를 설정하세요:
 
 ```
@@ -67,7 +61,7 @@ VITE_YOUTUBE_API_KEY=your-youtube-api-key-here
 
 ## 4. 구현
 
----
+
 
 ### 4-1) 상태 관리
 
