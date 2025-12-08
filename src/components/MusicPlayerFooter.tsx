@@ -173,8 +173,102 @@ export function MusicPlayerFooter() {
         <div id="youtube-player" />
       </div>
 
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center gap-4">
+      <div className="container mx-auto px-2 sm:px-4 py-2 sm:py-3">
+        {/* 모바일 레이아웃 */}
+        <div className="md:hidden space-y-3">
+          {/* 썸네일 및 정보 */}
+          <div className="flex items-center gap-2 flex-1 min-w-0">
+            {currentVideo ? (
+              <>
+                <img
+                  src={currentVideo.thumbnail}
+                  alt={currentVideo.title}
+                  className="w-12 h-12 object-cover rounded flex-shrink-0"
+                />
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium text-sm truncate">{currentVideo.title}</p>
+                  <p className="text-xs text-muted-foreground truncate">{currentVideo.channelTitle}</p>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="w-12 h-12 bg-muted rounded flex items-center justify-center flex-shrink-0">
+                  <Music className="h-5 w-5 text-muted-foreground" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium text-sm text-muted-foreground">재생 중인 음악이 없습니다</p>
+                  <p className="text-xs text-muted-foreground">음악을 선택하여 재생하세요</p>
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* 재생 컨트롤 및 진행 바 */}
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={playPrevious}
+              disabled={!hasPrevious || !currentVideo}
+              className="h-9 w-9"
+            >
+              <SkipBack className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="default"
+              size="icon"
+              onClick={togglePlayPause}
+              disabled={!currentVideo}
+              className="h-10 w-10"
+            >
+              {isPlaying ? (
+                <Pause className="h-5 w-5" />
+              ) : (
+                <Play className="h-5 w-5" />
+              )}
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={playNext}
+              disabled={!hasNext || !currentVideo}
+              className="h-9 w-9"
+            >
+              <SkipForward className="h-4 w-4" />
+            </Button>
+            <div className="flex items-center gap-2 flex-1">
+              <span className="text-xs text-muted-foreground whitespace-nowrap">
+                {currentVideo ? formatTime(currentTime) : '0:00'}
+              </span>
+              <div className="flex-1 h-1 bg-muted rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-primary transition-all"
+                  style={{
+                    width: duration > 0 ? `${(currentTime / duration) * 100}%` : '0%',
+                  }}
+                />
+              </div>
+              <span className="text-xs text-muted-foreground whitespace-nowrap">
+                {currentVideo ? formatTime(duration) : '0:00'}
+              </span>
+            </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleMute}
+              className="h-8 w-8"
+            >
+              {isMuted ? (
+                <VolumeX className="h-4 w-4" />
+              ) : (
+                <Volume2 className="h-4 w-4" />
+              )}
+            </Button>
+          </div>
+        </div>
+
+        {/* 데스크톱 레이아웃 */}
+        <div className="hidden md:flex items-center gap-4">
           {/* 썸네일 및 정보 */}
           <div className="flex items-center gap-3 flex-1 min-w-0">
             {currentVideo ? (

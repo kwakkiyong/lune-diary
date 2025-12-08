@@ -51,12 +51,12 @@ export function CalendarSection({selectedDate, onDateChange}: CalendarSectionPro
     }
 
     return (
-        <Card className="backdrop-blur-sm bg-card/80">
+        <Card className="backdrop-blur-sm">
             <CardHeader>
                 <CardTitle className="text-foreground">달력</CardTitle>
                 <CardDescription>일기가 있는 날짜는 강조 표시됩니다</CardDescription>
             </CardHeader>
-            <CardContent className="p-4">
+            <CardContent className="p-2 sm:p-4">
                 <div className="w-full max-w-md mx-auto relative">
                     <ReactCalendar
                         onChange={handleDateChange}

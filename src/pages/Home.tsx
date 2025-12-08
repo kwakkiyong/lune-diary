@@ -15,13 +15,13 @@ export function Home() {
     // AI 분석하기 버튼 클릭
     const handleAnalyzeClick = async () => {
         await handleAnalyze(entryText, today)
-        setEntryText('') // 분석 성공 후 입력 필드 초기화
+        setEntryText('')
     }
 
     return (
         <div className="relative min-h-[calc(100vh-200px)]">
             <div className="relative z-10">
-                <div className="max-w-4xl mx-auto space-y-6 mt-10">
+                <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6 mt-4 sm:mt-6 lg:mt-10 px-2 sm:px-4">
                     <GreetingSection/>
 
                     <DiaryInputForm
