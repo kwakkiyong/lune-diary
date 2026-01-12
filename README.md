@@ -62,6 +62,8 @@ VITE_YOUTUBE_API_KEY=your-youtube-api-key-here
 - YouTube API를 통한 감정에 맞는 음악 추천
 - 음악 플레이어 기능 (재생/정지, 볼륨 조절, 이전/다음 곡)
 
+![lune_01.png](public/assets/lune_01.png)
+
 ### 2. 📅 Calendar 페이지
 
 일기를 달력 형태로 확인하고 상세 내용을 볼 수 있는 페이지입니다.
@@ -72,6 +74,8 @@ VITE_YOUTUBE_API_KEY=your-youtube-api-key-here
 - 감정 점수 및 키워드 시각화
 - 일기 삭제 기능
 
+![lune_02.png](public/assets/lune_02.png)
+
 ### 3. 📊 Insights 페이지
 
 작성한 일기 데이터를 통계로 시각화하여 확인할 수 있는 대시보드 페이지입니다.
@@ -81,3 +85,5 @@ VITE_YOUTUBE_API_KEY=your-youtube-api-key-here
 - 감정 점수 추이 라인 차트 (Line Chart)
 - 키워드 빈도 막대 차트 (Bar Chart)
 - 데이터가 없을 때 빈 상태 UI
+
+![lune_03.png](public/assets/lune_03.png)
